@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th=
-"http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert New Item</title>
+<style>
+table, th, td {
+  border: 1px solid;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
 </head>
 <body>
 <form th:object="${newItem}" th:action="@{/update/{id}(id=${newItem.id})}" method='POST'>

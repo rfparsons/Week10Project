@@ -6,6 +6,7 @@
 package dmacc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,7 @@ import dmacc.repository.ItemRepository;
  * @author Bobby
  *
  */
+@Controller
 public class WebController {
 	@Autowired
 	ItemRepository repo;
@@ -28,7 +30,7 @@ public class WebController {
 		if(repo.findAll().isEmpty()) {
 			return addNewItem(model);
 		}
-		model.addAttribute("Items", repo.findAll());
+		model.addAttribute("items", repo.findAll());
 		return "results";
 	}
 	

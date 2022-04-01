@@ -3,12 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>View All Items</title>
+<style>
+table, th, td {
+  border: 1px solid;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
 </head>
 <body>
 <form>
 <table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Quantity</th>
+<th>Part #</th>
+<th>Supplier</th>
+
+<th></th>
+<th></th>
+</tr>
 <tr th:each="currentItem : ${items}" >
 <td th:text="${currentItem.id}" />
+<td th:text="${currentItem.name}" />
 <td th:text="${currentItem.quantity}" />
 <td th:text="${currentItem.partNo}" />
 <td th:text="${currentItem.supplier}" />
