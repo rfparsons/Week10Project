@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert New Item</title>
-<style>
-table, th, td {
-  border: 1px solid;
-}
+  <meta charset="UTF-8">
+  <title>Insert New Item</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid;
+    }
 
-* {
-  font-family: Arial, Helvetica, sans-serif;
-}
-</style>
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+  <script type="text/javascript">
+    // Form validation code will come here.
+    function validate() {
+
+      if (document.inputForm.name.value == "") {
+        alert("Please provide the part name!");
+        document.inputForm.name.focus();
+        return false;
+      }
+      if (document.inputForm.quantity.value == "" || isNaN(document.inputForm.quantity.value)) {
+
+        alert("Please provide a quantity!");
+        document.inputForm.quantity.focus();
+        return false;
+      }
+      if (document.inputForm.partNo.value == "") {
+        alert("Please provide the part number!");
+        document.inputForm.partNo.focus();
+        return false;
+      }
+      if (document.inputForm.supplier.value == "") {
+        alert("Please provide the supplier!");
+        document.inputForm.supplier.focus();
+        return false;
+      }
+      return (true);
+    }
+  </script>
 </head>
-<body>
-<form th:object="${newItem}" th:action="@{/update/{id}(id=${newItem.id})}" method='POST'>
-Name: <input name="name" size="25" th:field="*{name}"> <br />
-Quantity: <input type="number" min="0" name="quantity" size="10" th:field="*{quantity}"><br />
-Part Number: <input name="partNo" size="20" th:field="*{partNo}"><br />
-Supplier: <input name="supplier" size="20" th:field="*{supplier}"><br />
 
-<input name="submit" type="submit" value="submit" />
-</form>
-<a href="viewAll">View all Items</a>
+<body>
+  <form th:object="${newItem}" th:action="@{/update/{id}(id=${newItem.id})}" method='POST' name="inputForm" onsubmit = "return(validate());">
+    Name: <input name="name" size="25" th:field="*{name}"> <br />
+    Quantity: <input type="number" min="0" name="quantity" size="10" th:field="*{quantity}"><br />
+    Part Number: <input name="partNo" size="20" th:field="*{partNo}"><br />
+    Supplier: <input name="supplier" size="20" th:field="*{supplier}"><br />
+
+    <input name="submit" type="submit" value="submit" />
+  </form>
+  <a href="viewAll">View all Items</a>
 </body>
+
 </html>
